@@ -3,8 +3,8 @@ require './lib/key_generator'
 require 'pry'
 
 class Enigma
-
   attr_reader :character_map
+  
   def initialize
     @character_map = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
       "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
@@ -13,7 +13,7 @@ class Enigma
   end
 
   def find_index(message)
-    message_letters = message.chars
+    message_letters = message.downcase.chars
     message_indexes = message_letters.map do |letter|
       character_map.index(letter)
     end
@@ -36,5 +36,14 @@ class Enigma
     rotations= OffsetGenerator.new(key, date).generate_rotations
     encrypted_index = find_encrypted_index(message, rotations)
     encrypt_characters(encrypted_index).join
+  end
+
+  def decrypt(message, key, date=Date.parse("2012-04-03"))
+    rotations= OffsetGenerator.new(key, date).generate_rotations
+    encrypted_index = find_encrypted_index(message, rotations)
+  end
+
+  def find_cypher_indexes
+
   end
 end
