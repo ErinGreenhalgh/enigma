@@ -23,9 +23,8 @@ class EngimaTest < Minitest::Test
 
   def test_it_can_encrypt_a_message
     enigma = Enigma.new
-    assert_equal "7p9wv", enigma.encrypt("my ma") #12345, Date.parse("2012-04-03"))
-  end
-#edge case: message less than 4 letters long
+    assert_equal "7p9wv", enigma.encrypt("my ma") 
+
 
   def test_it_can_find_cypher_indexes
     enigma = Enigma.new
@@ -34,17 +33,17 @@ class EngimaTest < Minitest::Test
 
   def test_it_can_find_plain_text_index
     enigma = Enigma.new
-    assert_equal [12, -15, -3, -27, 0], enigma.find_plain_text_index("7p9wv", [21, 30, 38, 49])
+    assert_equal [12, -15, -3, -27, 0], enigma.find_plain_text_index([33, 15, 35, 22, 21], [21, 30, 38, 49])
   end
 
   def test_it_can_find_decrypted_characters
     enigma = Enigma.new
-    assert_equal ["m", "y", " ", "m", "a"], enigma.decrypt_characters([12, -15, -3, -27, -28])
+    assert_equal ["m", "y", " ", "m", "a"], enigma.decrypt_characters([12, -15, -3, -27, 0])
   end
 
   def test_it_can_decrypt_a_message
-    skip
     enigma = Enigma.new
-    assert_equal "my ma", enigma.decrypt("7p9wv")
+    assert_equal "my ma", enigma.decrypt("7p9wv", 12345)
   end
+
 end
