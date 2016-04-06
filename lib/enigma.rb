@@ -35,7 +35,7 @@ class Enigma
 
   def find_plain_text_index(cypher_indexes, rotations)
     cypher_indexes.map.with_index do |num, index|
-      num - rotations[index % 4]
+      (num - rotations[index % 4]) % 39
     end
   end
 

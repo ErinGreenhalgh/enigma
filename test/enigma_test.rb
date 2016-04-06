@@ -1,8 +1,11 @@
+require 'simplecov'
+SimpleCov.start
+
 gem 'minitest', '~> 5.2'
-# require 'simplecov'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/enigma'
+require 'pry'
 
 class EngimaTest < Minitest::Test
 
@@ -33,7 +36,7 @@ class EngimaTest < Minitest::Test
 
   def test_it_can_find_plain_text_index
     enigma = Enigma.new
-    assert_equal [12, -15, -3, -27, 0], enigma.find_plain_text_index([33, 15, 35, 22, 21], [21, 30, 38, 49])
+    assert_equal [12, 24, 36, 12, 0], enigma.find_plain_text_index([33, 15, 35, 22, 21], [21, 30, 38, 49])
   end
 
   def test_it_can_find_decrypted_characters
@@ -54,6 +57,11 @@ class EngimaTest < Minitest::Test
   def test_it_can_decrypt_with_only_the_message_and_key
     enigma = Enigma.new
     assert_equal "my ma", enigma.decrypt("1i yp", 12345)
+  end
+
+  def test_it_can_decrypt_horace_message
+    enigma = Enigma.new
+    assert_equal "messages are lost because allies can no", enigma.decrypt('3mu9rog9oitvotq9 fdvtiw9vfc22qg9okc4ovq', 14750)
   end
 
 end
