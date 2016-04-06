@@ -23,8 +23,8 @@ class EngimaTest < Minitest::Test
 
   def test_it_can_encrypt_a_message
     enigma = Enigma.new
-    assert_equal "7p9wv", enigma.encrypt("my ma") 
-
+    assert_equal "7p9wv", enigma.encrypt("my ma", 12345, Date.parse("2012-04-03"))
+  end
 
   def test_it_can_find_cypher_indexes
     enigma = Enigma.new
@@ -43,7 +43,17 @@ class EngimaTest < Minitest::Test
 
   def test_it_can_decrypt_a_message
     enigma = Enigma.new
-    assert_equal "my ma", enigma.decrypt("7p9wv", 12345)
+    assert_equal "my ma", enigma.decrypt("7p9wv", 12345, Date.parse("2012-04-03"))
+  end
+
+  def test_it_can_encrypt_with_only_the_message_and_key
+    enigma = Enigma.new
+    assert_equal "1i yp", enigma.encrypt("my ma", 12345)
+  end
+
+  def test_it_can_decrypt_with_only_the_message_and_key
+    enigma = Enigma.new
+    assert_equal "my ma", enigma.decrypt("1i yp", 12345)
   end
 
 end
