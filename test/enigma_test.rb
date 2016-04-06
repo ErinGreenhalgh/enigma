@@ -2,17 +2,31 @@ gem 'minitest', '~> 5.2'
 # require 'simplecov'
 require 'minitest/autorun'
 require 'minitest/pride'
-require '../lib/enigma.rb'
+require './lib/enigma'
 
 class EngimaTest < Minitest::Test
 
-  def test_it_can_split_message_into_groups_of_4
+  def test_it_it_can_find_corresponding_index_in_character_map
+    enigma = Enigma.new
+    assert_equal [12, 24, 36, 12, 0], enigma.find_index("my ma")
   end
+
+  def test_it_can_find_encrypted_index
+    enigma = Enigma.new
+    assert_equal [33, 15, 35, 22, 21], enigma.find_encrypted_index("my ma", [21, 30, 38, 49])
+  end
+
+  def test_it_can_find_encrypted_characters
+    enigma = Enigma.new
+    assert_equal ["7", "p", "9", "w", "v"], enigma.encrypt_characters([33, 15, 35, 22, 21])
+  end
+
+#edgecase: message includes caps
 
 
   def test_it_can_encrypt_a_message
     enigma = Enigma.new
-    assert_equal "7p9wzjrk18", enigma.encrypt("my message", 12345, Date.parse("2012-04-03"))
+    assert_equal "7p9wv", enigma.encrypt("my ma") #12345, Date.parse("2012-04-03"))
   end
 #edge case: message less than 4 letters long
 
