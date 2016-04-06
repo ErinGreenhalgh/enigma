@@ -4,7 +4,7 @@ require 'pry'
 
 class Enigma
   attr_reader :character_map
-  
+
   def initialize
     @character_map = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
       "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
@@ -26,7 +26,15 @@ class Enigma
     end
   end
 
-  def encrypt_characters(encrypted_index)
+  def find_plain_text_index(message, rotations)
+    plain_text_indexes = find_index(message)
+    plain_text_indexes.map.with_index do |num, index|
+      num - rotations[index]
+    end
+  end
+
+  def encrypt_characters(encrypted_index) #call this something different to handle
+    #decryption too;  find_characters
     encrypted_index.map do |num|
       character_map[num]
     end
@@ -40,10 +48,8 @@ class Enigma
 
   def decrypt(message, key, date=Date.parse("2012-04-03"))
     rotations= OffsetGenerator.new(key, date).generate_rotations
-    encrypted_index = find_encrypted_index(message, rotations)
+    encrypted_indexes = find_index(message)
+    encrypt_characters = find_plain_text_index(message, rotations)
   end
 
-  def find_cypher_indexes
-
-  end
 end
