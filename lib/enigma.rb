@@ -26,20 +26,22 @@ class Enigma
     end
   end
 
+  def encrypt_characters(encrypted_index)
+    encrypted_index.map do |num|
+      character_map[num]
+    end
+  end
+
   def find_plain_text_index(message, rotations)
     plain_text_indexes = find_index(message)
-
     plain_text_indexes.map.with_index do |num, index|
-# binding.pry
       num - rotations[index % 4]
     end
   end
 
-  def encrypt_characters(encrypted_index) #call this something different to handle
-    #decryption too;  find_characters
-    encrypted_index.map do |num|
+  def decrypt_characters(plain_characters)
+    plain_characters.map do |num|
       character_map[num]
-    end
   end
 
   def encrypt(message, key=12345, date=Date.parse("2012-04-03"))
@@ -50,8 +52,8 @@ class Enigma
 
   def decrypt(message, key, date=Date.parse("2012-04-03"))
     rotations= OffsetGenerator.new(key, date).generate_rotations
-    encrypted_indexes = find_index(message)
-    encrypt_characters = find_plain_text_index(message, rotations)
+    cypher_indexes = find_index(message)
+    plain_characters = find_plain_text_index(message, rotations)
+    decrypt_characters(plain_characters).join
   end
-
 end

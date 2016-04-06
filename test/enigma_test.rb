@@ -38,9 +38,8 @@ class EngimaTest < Minitest::Test
   end
 
   def test_it_can_find_decrypted_characters
-    skip
     enigma = Enigma.new
-    assert_equal ["m", "y", " ", "m", "a"], enigma.encrypt_characters([12, -15, -3, -27, -28])
+    assert_equal ["m", "y", " ", "m", "a"], enigma.decrypt_characters([12, -15, -3, -27, -28])
   end
 
   def test_it_can_decrypt_a_message
