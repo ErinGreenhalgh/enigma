@@ -2,7 +2,7 @@ gem 'minitest', '~> 5.2'
 # require 'simplecov'
 require 'minitest/autorun'
 require 'minitest/pride'
-require '../lib/offset_generator.rb'
+require './lib/offset_generator'
 
 class OffsetGeneratorTest < Minitest::Test
   def test_it_can_create_a_new_offset_generator_object
@@ -22,7 +22,7 @@ class OffsetGeneratorTest < Minitest::Test
     assert_equal "030412", offset.format_date
   end
 
-  #edge case: year like 2008 becomes 08 instead of 8 
+  #edge case: year like 2008 becomes 08 instead of 8
 
   def test_it_can_generate_date_offsets
     offset = OffsetGenerator.new(12345, Date.parse("2012-04-03"))
@@ -32,8 +32,9 @@ class OffsetGeneratorTest < Minitest::Test
 
   def test_it_can_create_final_rotations_from_key_and_date_offsets
     offset = OffsetGenerator.new(12345, Date.parse("2012-04-03"))
-    offset.generate_key_offsets
-    offset.generate_date_offsets
+    # offset.generate_key_offsets
+    # offset.generate_date_offsets
+    #in pry these won't be called 
     assert_equal [21, 30, 38, 49], offset.generate_rotations
   end
 
