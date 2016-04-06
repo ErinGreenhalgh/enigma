@@ -1,5 +1,7 @@
+require 'simplecov'
+SimpleCov.start
+
 gem 'minitest', '~> 5.2'
-# require 'simplecov'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/key_generator'
