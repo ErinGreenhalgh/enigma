@@ -28,8 +28,10 @@ class Enigma
 
   def find_plain_text_index(message, rotations)
     plain_text_indexes = find_index(message)
+
     plain_text_indexes.map.with_index do |num, index|
-      num - rotations[index]
+# binding.pry
+      num - rotations[index % 4]
     end
   end
 

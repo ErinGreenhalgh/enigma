@@ -34,11 +34,11 @@ class EngimaTest < Minitest::Test
 
   def test_it_can_find_plain_text_index
     enigma = Enigma.new
-    assert_equal [12, -15, -3, -27, -28], enigma.find_plain_text_index("7p9wv", [21, 30, 38, 49])
+    assert_equal [12, -15, -3, -27, 0], enigma.find_plain_text_index("7p9wv", [21, 30, 38, 49])
   end
 
   def test_it_can_find_decrypted_characters
-    skip 
+    skip
     enigma = Enigma.new
     assert_equal ["m", "y", " ", "m", "a"], enigma.encrypt_characters([12, -15, -3, -27, -28])
   end
