@@ -19,7 +19,11 @@ class OffsetGenerator
   end
 
   def format_date
-    @date.strftime("%d%m%y")
+    if @date.class == String
+      @date
+    else
+      @date.strftime("%d%m%y")
+    end
   end
 
   def generate_date_offsets

@@ -64,4 +64,25 @@ class EngimaTest < Minitest::Test
     assert_equal "messages are lost because allies can no", enigma.decrypt('3mu9rog9oitvotq9 fdvtiw9vfc22qg9okc4ovq', 14750)
   end
 
+  def test_it_can_find_the_rotation_number_for_a_character
+    enigma = Enigma.new
+    assert_equal ".", enimga.find_rotation_for_character()
+  end
+
+  def test_it_can_find_rotation_numbers
+    enigma = Enigma.new
+    assert_equal
+  end
+
+
+  def test_it_can_crack_a_message_with_a_given_date
+    enigma = Enigma.new
+    assert_equal "my ma", enigma.crack("7p9wv", "030412")
+  end
+
+  def test_it_can_crack_a_message_assuming_todays_date
+    enigma = Enigma.new
+    assert_equal "my ma", enigma.crack("1i yp")
+  end
+
 end

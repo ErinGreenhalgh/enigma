@@ -5,9 +5,8 @@ e = Enigma.new
 offset_generator = OffsetGenerator.new
 
 handle = File.open(ARGV[0], "r")
-handle.close
-
 plain_text = handle.read.chomp
+handle.close
 encrypted_text = e.encrypt(plain_text)
 
 writer = File.open(ARGV[1], "w")
