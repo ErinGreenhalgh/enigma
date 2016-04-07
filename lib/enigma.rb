@@ -20,10 +20,6 @@ class Enigma
     end
   end
 
-  def find_
-
-  end
-
   def find_encrypted_index(message, rotations)
     character_indexes = find_index(message)
     character_indexes.map.with_index do |num, index|
@@ -49,7 +45,6 @@ class Enigma
     end
   end
 
-
   def encrypt(message, key=@key, date=Date.today)
     rotations= OffsetGenerator.new(key, date).generate_rotations
     encrypted_index = find_encrypted_index(message, rotations)
@@ -62,21 +57,4 @@ class Enigma
     plain_characters = find_plain_text_index(cypher_indexes, rotations)
     decrypt_characters(plain_characters).join
   end
-
-  def crack(message, date=Date.today)
-    plain_text = message
-    rotation_numbers = find_rotation_numbers(message)
-    #find rotation numbers in order
-  end
-
-  def find_rotation_for_character(message, plain_text)
-    cypher_index = character_map.index(message)
-    plain_text_index = character_map.index(plain_tex)
-    rotation_number = cypher_index - plain_text_index
-  end
-
-  def method_name
-    find_rotation_for_character()
-  end
-
 end
