@@ -40,4 +40,5 @@ class OffsetGenerator
     rotation_d = key_offsets[3] + date_offsets[3]
     [rotation_a, rotation_b, rotation_c, rotation_d]
   end
+  
 end

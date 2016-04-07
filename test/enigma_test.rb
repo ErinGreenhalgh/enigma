@@ -13,7 +13,9 @@ class EngimaTest < Minitest::Test
     enigma = Enigma.new
     assert_equal [12, 24, 36, 12, 0], enigma.find_index("my ma")
   end
-#edgecase: message includes caps
+
+#edgecase: message includes caps or characters besides space, comma, period
+
   def test_it_can_find_encrypted_index
     enigma = Enigma.new
     assert_equal [33, 15, 35, 22, 21], enigma.find_encrypted_index("my ma", [21, 30, 38, 49])
@@ -63,4 +65,5 @@ class EngimaTest < Minitest::Test
     enigma = Enigma.new
     assert_equal "messages are lost because allies can no", enigma.decrypt('3mu9rog9oitvotq9 fdvtiw9vfc22qg9okc4ovq', 14750)
   end
+  
 end

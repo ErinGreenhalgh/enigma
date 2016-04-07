@@ -3,6 +3,7 @@ require './lib/key_generator'
 require 'pry'
 
 class Enigma
+
   attr_reader :character_map, :key
 
   def initialize
@@ -57,4 +58,5 @@ class Enigma
     plain_characters = find_plain_text_index(cypher_indexes, rotations)
     decrypt_characters(plain_characters).join
   end
+  
 end
