@@ -18,12 +18,15 @@ class OffsetGeneratorTest < Minitest::Test
     assert_equal [12, 23, 34, 45], offset.generate_key_offsets
   end
 
-  def test_it_can_get_date_into_the_right_format
+  def test_it_can_receive_date_as_a_date_object
     offset = OffsetGenerator.new(12345, Date.parse("2012-04-03"))
     assert_equal "030412", offset.format_date
   end
 
-  #edge case: year like 2008 becomes 08 instead of 8
+  def test_it_can_receive_date_as_a_string
+    offset = OffsetGenerator.new(12345, "030412")
+    assert_equal "030412", offset.format_date
+  end
 
   def test_it_can_generate_date_offsets
     offset = OffsetGenerator.new(12345, Date.parse("2012-04-03"))

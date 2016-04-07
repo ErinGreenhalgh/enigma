@@ -9,12 +9,19 @@ require 'pry'
 
 class EngimaTest < Minitest::Test
 
+  def test_it_can_take_in_a_message_with_capital_letters
+    enigma = Enigma.new
+    assert_equal "my message", enigma.format_message("mY MesSaGe")
+  end
+
+  def test_it_can_take_in_a_mesage_with_special_characters
+
+  end
+
   def test_it_it_can_find_corresponding_index_in_character_map
     enigma = Enigma.new
     assert_equal [12, 24, 36, 12, 0], enigma.find_index("my ma")
   end
-
-#edgecase: message includes caps or characters besides space, comma, period
 
   def test_it_can_find_encrypted_index
     enigma = Enigma.new
@@ -65,5 +72,5 @@ class EngimaTest < Minitest::Test
     enigma = Enigma.new
     assert_equal "messages are lost because allies can no", enigma.decrypt('3mu9rog9oitvotq9 fdvtiw9vfc22qg9okc4ovq', 14750)
   end
-  
+
 end

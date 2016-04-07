@@ -14,8 +14,12 @@ class Enigma
       @key = KeyGenerator.new
   end
 
+  def format_message(message)
+    message_letters = message.downcase
+  end
+
   def find_index(message)
-    message_letters = message.downcase.chars
+    message_letters = format_message(message).chars
     message_indexes = message_letters.map do |letter|
       character_map.index(letter)
     end
@@ -58,5 +62,5 @@ class Enigma
     plain_characters = find_plain_text_index(cypher_indexes, rotations)
     decrypt_characters(plain_characters).join
   end
-  
+
 end
