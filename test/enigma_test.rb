@@ -14,10 +14,6 @@ class EngimaTest < Minitest::Test
     assert_equal "my message", enigma.format_message("mY MesSaGe")
   end
 
-  def test_it_can_take_in_a_mesage_with_special_characters
-
-  end
-
   def test_it_it_can_find_corresponding_index_in_character_map
     enigma = Enigma.new
     assert_equal [12, 24, 36, 12, 0], enigma.find_index("my ma")
@@ -71,6 +67,11 @@ class EngimaTest < Minitest::Test
   def test_it_can_decrypt_horace_message
     enigma = Enigma.new
     assert_equal "messages are lost because allies can no", enigma.decrypt('3mu9rog9oitvotq9 fdvtiw9vfc22qg9okc4ovq', 14750)
+  end
+
+  def test_it_can_decrypt_my_message
+    enigma = Enigma.new
+    assert_equal "enigma is really hard", enigma.decrypt("hnnmpacov fduefroycndridsrtphcy", 32776, "060416")
   end
 
 end
