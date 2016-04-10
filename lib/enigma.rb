@@ -20,10 +20,6 @@ class Enigma
     end
   end
 
-  def find_
-
-  end
-
   def find_encrypted_index(message, rotations)
     character_indexes = find_index(message)
     character_indexes.map.with_index do |num, index|
