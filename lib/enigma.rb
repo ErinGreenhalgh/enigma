@@ -63,4 +63,28 @@ class Enigma
     decrypt_characters(plain_characters).join
   end
 
+  def find_cypher_end(cypher)
+    cypher[-7..-1]
+  end
+
+  def find_cypher_indexes(cypher)
+    find_index(find_cypher_end(cypher))
+  end
+
+  def find_plain_text_indexes
+    find_index("..end..")
+  end
+
+  def find_corresponding_rotations_for_cypher
+    corresponding_rotations = cypher.length % 4
+    if corresponding_rotations == 0
+      cypher[-4..-1]
+    elsif corresponding_rotations == 1
+      cypher[-5..-2]
+    elsif corresponding_rotations == 2
+      cypher[-6..-3]
+    else
+      cypher[-7..-4]
+    end
+
 end

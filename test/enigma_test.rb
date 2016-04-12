@@ -69,4 +69,5 @@ class EngimaTest < Minitest::Test
     assert_equal "messages are lost because allies can no", enigma.decrypt('3mu9rog9oitvotq9 fdvtiw9vfc22qg9okc4ovq', 14750)
   end
 
+
 end
