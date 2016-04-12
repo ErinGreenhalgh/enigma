@@ -1,3 +1,5 @@
+require './lib/enigma'
+
 class Encryptor
 
 def find_encrypted_index(message, rotations)
@@ -6,7 +8,6 @@ def find_encrypted_index(message, rotations)
     (num + rotations[index % 4]) % character_map.length
   end
 end
-
 
   def encrypt_characters(encrypted_index)
     encrypted_index.map do |num|

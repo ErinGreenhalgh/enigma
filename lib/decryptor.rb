@@ -1,3 +1,4 @@
+require './lib/enigma'
 class Decryptor
 
   def find_plain_text_index(cypher_indexes, rotations)
