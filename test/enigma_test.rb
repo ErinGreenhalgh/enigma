@@ -69,5 +69,42 @@ class EngimaTest < Minitest::Test
     assert_equal "messages are lost because allies can no", enigma.decrypt('3mu9rog9oitvotq9 fdvtiw9vfc22qg9okc4ovq', 14750)
   end
 
+  def test_it_can_find_the_cypher_indexes_in_the_character_map
+    enigma = Enigma.new
+    assert_equal [6, 0, 21, 30, 11, 0, 15], enigma.find_cypher_indexes("gav4lap")
+  end
+
+  def test_it_can_find_the_plain_text_indexes_in_the_character_map
+    enigma = Enigma.new
+    assert_equal [37, 37, 4, 13, 3, 37, 37], enigma.find_plain_text_indexes
+  end
+
+  # def test_it_can_find_the_corresponding_cypher_characters_for_rotations
+  #   enigma = Enigma.new
+  #   assert_equal "gav4", enigma.find_corresponding_cypher_characers_for_rotations("gav4lap")
+  # end
+
+  def test_it_can_find_rotation_numbers
+    enigma = Enigma.new
+    assert_equal [31, 37, -17, -17, -8, 37, 22], enigma.find_rotation_numbers("gav4lap")
+  end
+
+  def test_it_can_find_abcd_rotations
+    enigma = Enigma.new
+    assert_equal [-17, -8, 37, 22], enigma.find_abcd_rotations("gav4lap")
+  end
+
+  def test_it_can_crack_a_message_with_a_given_date
+    skip
+    enigma = Enigma.new
+    assert_equal "my ma", enigma.crack("7p9wv", "030412")
+  end
+
+  def test_it_can_crack_a_message_assuming_todays_date
+    skip
+    enigma = Enigma.new
+    assert_equal "my ma", enigma.crack("1i yp")
+  end
+
 
 end

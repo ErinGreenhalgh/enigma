@@ -75,16 +75,24 @@ class Enigma
     find_index("..end..")
   end
 
-  def find_corresponding_rotations_for_cypher
-    corresponding_rotations = cypher.length % 4
-    if corresponding_rotations == 0
-      cypher[-4..-1]
-    elsif corresponding_rotations == 1
-      cypher[-5..-2]
-    elsif corresponding_rotations == 2
-      cypher[-6..-3]
+  def find_abcd_rotations(cypher)
+    rotation_numbers = find_rotation_numbers(cypher)
+    rotations = cypher.length % 4
+    if rotations == 0
+      rotation_numbers[-4..-1]
+    elsif rotations == 1
+      rotation_numbers[-5..-2]
+    elsif rotations == 2
+      rotation_numbers[-6..-3]
     else
-      cypher[-7..-4]
+      rotation_numbers[-7..-4]
     end
+  end
+
+  def find_rotation_numbers(cypher)
+    find_plain_text_indexes.map.with_index do |character, index|
+      character - find_cypher_indexes(cypher)[index]
+    end
+  end
 
 end
